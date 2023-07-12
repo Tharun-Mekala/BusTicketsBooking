@@ -227,15 +227,25 @@ void SelectTickets(BUS *b)
 int getBus(char s[],char d[])
 {
 	int i=0;
+	int arr[100],idx=0;
 	char s1[100],s2[100];
+	int ch=-1;
 	for(i=0;i<NOB;i++)
 	{
 		int idx1=strcmp(bus[i].From,s);
 		int idx2=strcmp(bus[i].To,d);
 		if(idx1==0&&idx2==0)
-			return i;
+			arr[idx++]=i;
 	}
-	return -1;
+	if(idx!=0)
+	{
+		printf("BusId\tFrom\tTo\tBNO\tType\tDepature Time\tReporting Time\tDriver\n");
+		for(i=0;i<idx;i++)
+			printf("%d\t%s\t%s\t%s\t%s\t%s\t\t%s\t\t%s\n",(i+1),bus[arr[i]].From,bus[arr[i]].To,bus[arr[i]].Bno,bus[arr[i]].Type,bus[arr[i]].Dtime,bus[arr[i]].Rtime,bus[arr[i]].Driver);
+		printf("Enter your choice : ");
+		scanf("%d",&ch);
+	}
+	return ch-1;
 }
 void bookTickets(BUS b[])
 {
