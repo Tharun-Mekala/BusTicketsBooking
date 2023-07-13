@@ -25,6 +25,20 @@ typedef struct Bus
 }BUS;
 BUS bus[100];
 int NOB=0;
+//Methods in the Program
+void setBus(char f[],char t[],char type[],char bno[],char dt[],char rt[],char d[],int c);
+void insertBus(BUS b[]);
+void setTicket(int idx);
+void clearTicket(int idx);
+void DeleteBus(BUS b[]);
+void showTickets(BUS b);
+void showBus(BUS b[],int n);
+void printReceipt(Ticket t[],BUS B,int Tn);
+void SelectTickets(BUS *b);
+int getBus(char s[],char d[]);
+void bookTickets(BUS b[]);
+void BookedTickets(BUS b[],int n);
+
 void setBus(char f[],char t[],char type[],char bno[],char dt[],char rt[],char d[],int c)
 {
 	int flag=0,i=0;
@@ -268,7 +282,7 @@ void bookTickets(BUS b[])
 void BookedTickets(BUS b[],int n)
 {
 	int i=0,j=0,count=0;
-	printf("From\tTo\tNumber\tTicketsBooked\n");
+	printf("From\tTo\tNumber\tTicketsBooked\tTicketsAvailable\n");
 	for(i=0;i<n;i++)
 	{
 		printf("%s\t%s\t%s\t",bus[i].From,bus[i].To,bus[i].Bno);
@@ -276,7 +290,7 @@ void BookedTickets(BUS b[],int n)
 		for(j=1;j<=31;j++)
 			if(bus[i].t[j].conformed==1)
 				count++;
-		printf("%d\n",count);
+		printf("%d\t\t%d\n",count,(31-count));
 	}
 }
 void main()
