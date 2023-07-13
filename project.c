@@ -25,7 +25,7 @@ typedef struct Bus
 }BUS;
 BUS bus[100];
 int NOB=0;
-//Methods in the Program
+
 void setBus(char f[],char t[],char type[],char bno[],char dt[],char rt[],char d[],int c);
 void insertBus(BUS b[]);
 void setTicket(int idx);
